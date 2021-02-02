@@ -1,0 +1,25 @@
+
+########################
+#
+# UNICO PROJECT API GATEWAY
+#
+########################
+
+spring:
+  profiles:
+    active: local
+server:
+  servlet:
+    context-path: /api-gateway
+    
+---   #local
+spring:
+  profiles: local
+server:
+  port: 8080
+zuul:
+  routes: 
+    user-service:
+      path: /user-svc/**
+      url: http://localhost:8083/
+    
